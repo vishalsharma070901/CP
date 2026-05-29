@@ -12,6 +12,7 @@ int main(){
     for(int i  = 0;i<n;i++){
         cin>>arr[i];
     }
+    
     vector<long long> prefixSum(n);
     prefixSum[0] = arr[0];
 
