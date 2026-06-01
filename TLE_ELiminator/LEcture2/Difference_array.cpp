@@ -5,32 +5,28 @@ using namespace std;
 
 int main(){
     int n;
-    cin>> n;
-    vector<int>arr(n+1);
-
-    for(int i = 1; i <= n; i++) cin>> arr[i];
-
-    vector<int>diff(n+1, 0);
-
+    cin >> n;
+    vector<int>v(n);
+    for (int i = 0; i < n; i++)cin >> v[i]; //n
+    
     int q;
-    cin>> q;
+    cin >> q;
 
-    while(q--){
+    vector<int>diff(n + 1, 0);
+
+    while (q--) {
         int l, r, x;
-        cin>> l >> r >> x;
-
+        cin >> l >> r >> x; //O-based indexing
         diff[l] += x;
-        if(r+1 < n) diff[r+1] -= x;
-
+        diff[r + 1] -= x;
     }
-    // take the prre sum of the diff array to get the final array
-
-    for(int i = 1; i <= n; i++){
-        diff[i] += diff[i-1];
+    //take prefix sum of diff array
+    for (int i = 1; i <= n; i++) {
+        diff[i] += diff[i - 1];
     }
-    for(int i = 1; i <= n; i++){
-        cout<< arr[i] + diff[i] << " ";
+    for (int i = 0; i < n; i++) {
+        cout << v[i] + diff[i+1] << " ";
     }
-    cout<< endl;
+    cout << endl;
 
 }
